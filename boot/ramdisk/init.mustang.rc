@@ -1,0 +1,42 @@
+# init rc for mustang only.
+on post-fs-data
+   # Update dm-verity state and set partition.*.verified properties
+   verity_update_state
+
+    # md32 boot
+    chown root system /dev/md32
+    chmod 0440 /dev/md32
+    chown root system /sys/class/misc/md32/md32_mobile_log
+    chmod 0660 /sys/class/misc/md32/md32_mobile_log
+    write /sys/class/misc/md32/md32_boot 1
+
+service wipe_fos_flags /init.fosflags.sh wipe
+    class core
+    oneshot
+    disabled
+
+on property:sys.boot_completed=1
+   # enable ksm
+   write /sys/kernel/mm/ksm/pages_to_scan 100
+   write /sys/kernel/mm/ksm/sleep_millisecs 700
+   write /sys/kernel/mm/ksm/run 1
+   # set scheduler parameter
+   write /proc/sys/kernel/sched_migration_cost_ns 33000
+   write /proc/sys/kernel/sched_min_granularity_ns 1500000
+
+on property:amazon.fos_flags.wipe=1
+    start wipe_fos_flags
+
+# open /dev/watchdog
+service watchdogd /sbin/watchdogd  20 10
+    class core
+    seclabel u:r:watchdogd:s0
+
+on boot
+    chmod 0755 /sys/kernel/debug/tracing
+
+    # enable rcu_expedited
+    write /sys/kernel/rcu_expedited 1
+
+on property:dev.bootcomplete=1
+    write /sys/power/pm_async 0
