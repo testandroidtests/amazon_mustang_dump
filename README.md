@@ -1,0 +1,13 @@
+# mustang-user 7.0 PS7315 1958 amz-p,release-keys
+- manufacturer: amazon
+- platform: mt8163
+- codename: mustang
+- flavor: mustang-user
+- release: 9
+- id: PS7315
+- incremental: 0018354775684
+- tags: amz-p,release-keys
+- fingerprint: Amazon/mustang/mustang:7.0/PS7315/1958N:user/amz-p,release-keys
+- brand: Amazon
+- branch: mustang-user-7.0-PS7315-1958-amz-p,release-keys
+- repo: amazon_mustang_dump
