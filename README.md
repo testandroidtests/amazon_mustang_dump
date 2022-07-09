@@ -1,0 +1,14 @@
+# mustang-user 9 PS7323.2829N 0023455272192 amz-p,release-keys
+- manufacturer: amazon
+- platform: mt8163
+- codename: mustang
+- flavor: mustang-user
+- release: 9
+- id: PS7323.2829N
+- incremental: 0023455272324
+- tags: amz-p,release-keys
+- fingerprint: Amazon/mustang/mustang:9/PS7323.2829N/0023455272192:user/amz-p,release-keys
+- is_ab: false
+- brand: Amazon
+- branch: mustang-user-9-PS7323.2829N-0023455272192-amz-p,release-keys
+- repo: amazon_mustang_dump
